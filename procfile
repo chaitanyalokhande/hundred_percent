@@ -1,2 +1,1 @@
-web: gunicorn hundred_percents.wsgi 
-
+web: bundle exec hundred_percent server -p $PORT
