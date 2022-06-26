@@ -1,1 +1,2 @@
-web: gunicorn hundred_percents.wsgi --log-file -
+web: gunicorn hundred_percents.wsgi 
+
