@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/x-icon" href="https://i.ibb.co/CwVc7w5/one-hundred.png">
+    <title>Marks Calculator</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <style>
+        body {
+            background-color: rgb(23, 23, 23);
+        }
+
+        h1 {
+            font-size: 50px;
+            margin-top: 30px;
+            background: -webkit-linear-gradient(180deg, rgba(255, 0, 217, 1) 5%, rgba(0, 212, 255, 1) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-align: center;
+
+
+
+        }
+
+        #card {
+            justify-content: center;
+            justify-self: center;
+            width: max-content;
+            background-color: rgb(23, 23, 23);
+            border-color: rgb(178, 175, 175);
+            align-content: center;
+
+
+            width: auto;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%)
+        }
+
+        #btn {
+            background-color: rgb(242, 0, 255);
+            color: rgb(178, 175, 175);
+        }
+
+        #btn:hover {
+
+
+            border-color: rgb(242, 0, 255) !important;
+            box-shadow: rgb(242, 0, 255);
+        }
+
+        #list {
+            color: rgb(23, 23, 23);
+            border-style: hidden;
+
+        }
+
+        li {
+            background-color: rgb(23, 23, 23);
+            border-color: rgb(23, 23, 23);
+
+            border-style: hidden;
+        }
+
+        h3 {
+            color: rgb(178, 175, 175);
+        }
+
+        .form-control:focus {
+            border-color: rgb(242, 0, 255);
+            box-shadow: none;
+            -webkit-box-shadow: none;
+        }
+
+        .has-error .form-control:focus {
+            box-shadow: none;
+            -webkit-box-shadow: none;
+        }
+
+        #hours {
+            background-color: rgb(23, 23, 23);
+            color: rgb(178, 175, 175);
+            border: none;
+            padding-left: 50%;
+            margin-bottom: 10px;
+        }
+
+        #spann {
+            width: 100%;
+            text-align: center;
+            background-color: rgb(23, 23, 23);
+            color: rgb(178, 175, 175);
+        }
+
+        #footer {
+            background: -webkit-linear-gradient(180deg, rgba(255, 0, 217, 1) 5%, rgba(0, 212, 255, 1) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-align: center;
+            margin-top: 40%;
+            font-size: 20px;
+        }
+
+        #footerp {
+            background: -webkit-linear-gradient(180deg, rgba(255, 0, 217, 1) 5%, rgba(0, 212, 255, 1) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-align: center;
+            margin-top: 2px;
+            font-size: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>ML Based Marks Calculator</h1>
+    <div class="card text-center" id="card">
+        <div class="card-body">
+            <h5 class="card-title" style="color:rgb(178, 175, 175) ;">Calculate how many marks you get after how many
+                hours of study</h5>
+            <p class="card-text" style="color:rgb(178, 175, 175) ;">
+                Our model gives result with 91% of accuracy 🚀
+                But there are some rules for study 📜
+
+            </p>
+            <ul class="list-group " id="list" style="background-color:rgb(178, 175, 175) ;">
+                <li class="list-group-item" style="color:rgb(178, 175, 175) ; background-color: rgb(23, 23, 23);">-
+                    Study daily
+                    for whole semester atleast
+                    2 hr/day ✌🏼</li>
+                <li class="list-group-item" style="color:rgb(178, 175, 175) ;background-color: rgb(23, 23, 23);">- Don't
+                    just memorize the topic 🤯</li>
+                <li class="list-group-item" style="color:rgb(178, 175, 175) ;background-color: rgb(23, 23, 23);">- Try
+                    to understand the topic 🧠</li>
+                <li class="list-group-item" style="color:rgb(178, 175, 175) ;background-color: rgb(23, 23, 23);">- Study
+                    whole the syllabus don't skip any
+                    chapter 😁</li>
+                <li class="list-group-item" style="color:rgb(178, 175, 175) ;background-color: rgb(23, 23, 23);">- Just
+                    do it 🔥</li>
+            </ul><br>
+            <form action="/calculate" method="post">
+                {% csrf_token %}
+                <h5 class="card-title" style="color:rgb(178, 175, 175) ;">Maximum input hour is 40 because it is harmful
+                    for you mental health 😜</h5>
+                <label for="hours" style="background-color:rgb(23, 23, 23) ; color:rgb(255, 31, 31) ; position:relative;
+                        right:250px;">{{error}}</label>
+                <div class="input-group mb-3">
+
+
+                    <input type="text" placeholder="Hours" class="form-control"
+                        style="background-color:rgb(23, 23, 23) ; color: rgb(178, 175, 175) ;" name="hours"
+                        aria-label="Text input with checkbox">
+                </div>
+
+
+
+                <input type="submit" value="Calculate" id="btn" class="btn">
+        </div>
+        </form>
+        {% block content %}
+        <div class="input-group mb-3">
+            <span id="spann">If you follow all the rules you can easily achieve: {{hour}} 🏆💖</span>
+        </div>
+        {% endblock %}
+    </div>
+    <h1 id="footer">Some Awesome helping tools are coming soon</h1>
+    <p id="footerp">By :- hundred%</p>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
